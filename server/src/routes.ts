@@ -11,11 +11,13 @@ const itemsController = new ItemsController();
 
 //Route to get svg icons
 routes.get ('/items', itemsController.index);
-
 //Route to create colect points
 routes.post('/points', pointsController.create);
-
+//Route to show only one colect point
+routes.get ('/points', pointsController.index);
 //Route to show only one colect point
 routes.get ('/points/:id', pointsController.show);
+
+
 
 export default routes;
