@@ -1,5 +1,7 @@
 import React from 'react';
 
+//Styles
+import './styles.css'
 
 //Assets
 import logo from '../../assets/logo.svg';
