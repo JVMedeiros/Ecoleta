@@ -5,6 +5,7 @@ import {Map, TileLayer, Marker} from 'react-leaflet';
 
 //Router
 import {Link} from 'react-router-dom';
+import api from '../../services/api';
 
 //Styles
 import './styles.css'
