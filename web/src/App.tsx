@@ -3,13 +3,12 @@ import React, { useState } from 'react';
 //Styles
 import './App.css';
 
-//Components
-import Home from './pages/Home';
-import CreatePoint from './pages/CreatePoint';
+//Router manager
+import Routes from './routes';
 
 function App() {
   return (
-    <Home />
+    <Routes />
   );
 }
 
