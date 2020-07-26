@@ -11,7 +11,9 @@ const Home = () => {
     return (
         <div id="page-home">
            <div className="content">
-               <img src={logo} alt="Ecoleta"/>
+               <header>
+                    <img src={logo} alt="Ecoleta"/>
+                </header>
             </div> 
         </div>
     )
