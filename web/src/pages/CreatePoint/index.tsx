@@ -5,7 +5,7 @@ import {Map, TileLayer, Marker} from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
 
 //Router
-import {Link} from 'react-router-dom';
+import {Link, useHistory, } from 'react-router-dom';
 import api from '../../services/api';
 import axios from 'axios';
 
@@ -47,6 +47,8 @@ const CreatePoint = () => {
     const [selectedCity, setSelectedCity] = useState('0');
     const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0, 0]);
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
+    const history = useHistory();
 
     useEffect(() => {
         api.get('items').then(response => {
@@ -124,7 +126,7 @@ const CreatePoint = () => {
         }
     }
 
-    function handleSubmit(event: FormEvent) {
+    async function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
         const {name, email, whatsapp} = formData;
@@ -145,7 +147,11 @@ const CreatePoint = () => {
             items
         };
 
-        console.log(data);
+        await api.post('points', data);
+
+        alert('Ponto de coleta cadastrado!');
+
+        history.push('/')
     }
 
     return (
@@ -188,10 +194,10 @@ const CreatePoint = () => {
                     <div className="field">
                         <label htmlFor="whatsapp">WhatsApp</label>
                         <input 
+                        placeholder="(99)999999999"
                         type="text"
                         name="whatsapp"
                         id="whatsapp"
-                        placeholder="(99)999999999"
                         onChange={handleInputChange}
                         /> 
                     </div>
