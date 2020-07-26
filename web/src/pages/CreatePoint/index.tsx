@@ -1,4 +1,4 @@
-import React, {useEffect, useState, ChangeEvent} from 'react';
+import React, {useEffect, useState, ChangeEvent, FormEvent} from 'react';
 
 //Map
 import {Map, TileLayer, Marker} from 'react-leaflet';
@@ -15,7 +15,6 @@ import './styles.css'
 //Assets
 import logo from '../../assets/logo.svg'
 import { FiArrowLeft } from 'react-icons/fi';
-import { kMaxLength } from 'buffer';
 
 interface Item {
     id: number;
@@ -125,6 +124,30 @@ const CreatePoint = () => {
         }
     }
 
+    function handleSubmit(event: FormEvent) {
+        event.preventDefault();
+
+        const {name, email, whatsapp} = formData;
+        const uf = selectedUf;
+        const city = selectedCity;
+        const [latitude, longitude] = selectedPosition;
+        const items = selectedItems;
+
+
+        const data = {
+            name,
+            email,
+            whatsapp,
+            uf,
+            city,
+            latitude,
+            longitude,
+            items
+        };
+
+        console.log(data);
+    }
+
     return (
         <div id="page-create-point">
             <header>
@@ -136,7 +159,7 @@ const CreatePoint = () => {
                 </Link>
             </header>
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <h1>Cadastro do <br/> ponto de coelta</h1>
                 {/* Collection point info containter*/}
                 <fieldset>
@@ -168,6 +191,7 @@ const CreatePoint = () => {
                         type="text"
                         name="whatsapp"
                         id="whatsapp"
+                        placeholder="(99)999999999"
                         onChange={handleInputChange}
                         /> 
                     </div>
