@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import './App.css';
 
 //Components
-
+import Home from './pages/Home';
 
 function App() {
   return (
-    <h1>Ecoleta</h1>
+    <Home />
   );
 }
 
