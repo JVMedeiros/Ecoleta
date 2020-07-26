@@ -82,11 +82,38 @@ const CreatePoint = () => {
                     </div>
                 </fieldset>
 
+                {/* Collection point itens collect container*/}
                 <fieldset>
                     <legend>
                         <h2>Itens de coleta</h2>
                         <span>Selecione um ou mais itens de coleta</span>
                     </legend>
+                    <ul className="items-grid">
+                        <li>
+                            <img src="http://localhost:3333/uploads/oleo.svg" alt="teste"/>
+                            <span>Oleo de cozinha</span>
+                        </li>
+                        <li>
+                            <img src="http://localhost:3333/uploads/oleo.svg" alt="teste"/>
+                            <span>Oleo de cozinha</span>
+                        </li>
+                        <li>
+                            <img src="http://localhost:3333/uploads/oleo.svg" alt="teste"/>
+                            <span>Oleo de cozinha</span>
+                        </li>
+                        <li>
+                            <img src="http://localhost:3333/uploads/oleo.svg" alt="teste"/>
+                            <span>Oleo de cozinha</span>
+                        </li>
+                        <li>
+                            <img src="http://localhost:3333/uploads/oleo.svg" alt="teste"/>
+                            <span>Oleo de cozinha</span>
+                        </li>
+                        <li>
+                            <img src="http://localhost:3333/uploads/oleo.svg" alt="teste"/>
+                            <span>Oleo de cozinha</span>
+                        </li>
+                    </ul>
                 </fieldset>
             </form>
         </div>
