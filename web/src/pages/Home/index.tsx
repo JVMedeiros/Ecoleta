@@ -1,8 +1,17 @@
 import React from 'react';
 
+
+//Assets
+import logo from '../../assets/logo.svg';
+
+
 const Home = () => {
     return (
-        <h1>Ecoleta</h1>
+        <div id="page-home">
+           <div className="content">
+               <img src={logo} alt="Ecoleta"/>
+            </div> 
+        </div>
     )
 }
 
