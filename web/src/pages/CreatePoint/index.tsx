@@ -66,14 +66,15 @@ const CreatePoint = () => {
 
     useEffect(() => {
         axios
-        .get<IBGECITYResponse[]>(
-            `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`)
-        .then((response) => {
-            const cityNames = response.data.map(uf => uf.nome);
-
-            setCities(cityNames);
-        });
-    }, [selectedUf]);
+          .get<IBGECITYResponse[]>(
+            `http://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`
+          )
+          .then((response) => {
+            const citiesNames = response.data.map((uf) => uf.nome);
+    
+            setCities(citiesNames);
+          });
+      }, [selectedUf]);
 
     useEffect(() => {
         if (selectedUf === '0') {
