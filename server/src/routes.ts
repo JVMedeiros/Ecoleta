@@ -14,7 +14,7 @@ routes.get ('/items', itemsController.index);
 //Route to create colect points
 routes.post('/points', pointsController.create);
 //Route to show only one colect point
-routes.get ('/points', pointsController.index);
+routes.get('/points', pointsController.index);
 //Route to show only one colect point
 routes.get ('/points/:id', pointsController.show);
 
