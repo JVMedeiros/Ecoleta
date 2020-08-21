@@ -1,9 +1,10 @@
 import React from 'react';
 import {AppLoading} from 'expo';
+import { Feather as Icon } from '@expo/vector-icons';
 import {View, ImageBackground, Image, StyleSheet, Text} from 'react-native';
 import { Roboto_400Regular, Roboto_500Medium} from '@expo-google-fonts/roboto';
 import { Ubuntu_700Bold, useFonts} from '@expo-google-fonts/ubuntu';
-
+import {RectButton} from 'react-native-gesture-handler';
 
 const Home = () => {
   const [fontsLoaded] = useFonts({
@@ -29,7 +30,16 @@ const Home = () => {
       </View>
 
       <View style={styles.footer}>
-        
+        <RectButton style={styles.button} onPress={() => {}}>
+          <View style={styles.buttonIcon}>
+            <Text>
+              <Icon name="arrow-right" color="#fff" size={24} />
+            </Text>
+          </View>
+          <Text style={styles.buttonText}>
+            Entrar
+          </Text>
+        </RectButton>
       </View>
     </ImageBackground>
   );
