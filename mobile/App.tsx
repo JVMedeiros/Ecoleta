@@ -1,26 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'react-native';
+
+//Components
+import Home from './src/pages/Home';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.texto}>Agora vai, porra!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar />
+      <Home />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#7159c1',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  texto: {
-    fontSize: 20,
-    color: '#fff',
-    fontWeight: 'bold'
-  }
-});
