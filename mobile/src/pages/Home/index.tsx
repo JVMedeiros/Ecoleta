@@ -27,6 +27,10 @@ const Home = () => {
         <Text style={styles.title}>Seu marketplace de coleta de resíduos</Text>
         <Text style={styles.description}>Ajudamos pessoas a encontrarem pontos de coleta de forma eficiente.</Text>
       </View>
+
+      <View style={styles.footer}>
+        
+      </View>
     </ImageBackground>
   );
 };
