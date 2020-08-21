@@ -1,9 +1,24 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
+import Constants from 'expo-constants';
+import {Feather as Icon } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
 
 const Detail = () => {
+  const navigation = useNavigation();
+
+  function handleNavigateBack() {
+    navigation.goBack();
+  }
+
   return (
-    <View />
+    <View style={styles.container}>
+      <TouchableOpacity onPress={handleNavigateBack}>
+        <Icon name="arrow-left" size={20} color="#34cb79" />
+      </TouchableOpacity>
+
+    </View>
   );
 };
 
@@ -11,7 +26,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 32,
-    paddingTop: 20,
+    paddingTop: 20 + Constants.statusBarHeight,
   },
 
   pointImage: {
