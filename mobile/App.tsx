@@ -7,7 +7,7 @@ import Home from './src/pages/Home';
 export default function App() {
   return (
     <>
-      <StatusBar />
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent/>
       <Home />
     </>
   );
