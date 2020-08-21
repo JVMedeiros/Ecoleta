@@ -1,8 +1,17 @@
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
+
+const Points = () => {
+  return (
+    <View />
+  );
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 32,
-    paddingTop: 20 + Constants.statusBarHeight,
+    paddingTop: 20,
   },
 
   title: {
@@ -94,3 +103,5 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
 });
+
+export default Points;
