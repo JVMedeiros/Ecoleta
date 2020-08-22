@@ -3,7 +3,7 @@ import {View, StyleSheet, Text, ScrollView, Image, Alert} from 'react-native';
 import Constants from 'expo-constants';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {Feather as Icon } from '@expo/vector-icons';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import MapView, { Marker } from 'react-native-maps';
 import {SvgUri} from 'react-native-svg';
 import * as Location from 'expo-location';
@@ -19,19 +19,18 @@ interface Point {
   id: number;
   name: string;
   image: string;
+  image_url: string;
   latitude: number;
   longitude: number;
 }
 
 interface Params {
-  point_id: number;
+  uf: string;
+  city: string;
 }
 
 const Points = () => {
   const navigation = useNavigation();
-  const route = useRoute();
-
-  const routeParms = route.params as Params;
 
   const [items, setItems] = useState<Item[]>([]);
   const [points, setPoints] = useState<Point[]>([]);
@@ -85,8 +84,9 @@ const Points = () => {
   }
 
   function handleNavigateToDetail(id: number) {
-    navigation.navigate('Detail', {point_id: id});
+    navigation.navigate('Detail', { point_id: id });
   }
+
 
   function handleSelectedItem(id: number) {
     const alreadySelected = selectedItems.findIndex(item => item === id);
@@ -126,7 +126,7 @@ const Points = () => {
                 <Marker
                   key={String(point.id)}
                   style={styles.mapMarker}
-                  onPress={() => handleNavigateToDetail(point.id)} 
+                  onPress={() => handleNavigateToDetail(point.id)}
                   coordinate={{
                     latitude: point.latitude,
                     longitude: point.longitude,
