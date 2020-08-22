@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, StyleSheet, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
+import React, {useState, useEffect } from 'react';
+import {View, StyleSheet, Text, ScrollView, Image, TouchableOpacity, SafeAreaView} from 'react-native';
 import Constants from 'expo-constants';
 import {Feather as Icon, FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -8,12 +8,14 @@ import { RectButton } from 'react-native-gesture-handler';
 const Detail = () => {
   const navigation = useNavigation();
 
+  useEffect(() => {}, []);
+
   function handleNavigateBack() {
     navigation.goBack();
   }
 
   return (
-    <>
+    <SafeAreaView style={{flex: 1}}>
       <View style={styles.container}>
         <TouchableOpacity onPress={handleNavigateBack}>
           <Icon name="arrow-left" size={20} color="#34cb79" />
@@ -33,17 +35,21 @@ const Detail = () => {
             <FontAwesome name="whatsapp" size={20} color="#fff"/>
             <Text style={styles.buttonText}>WhatsApp</Text>
           </RectButton>
+
+          <RectButton style={styles.button} onPress={() => {}}>
+            <Icon name="mail" size={20} color="#fff"/>
+            <Text style={styles.buttonText}>E-mail</Text>
+          </RectButton>
         </View>
       </View>
-    </>
+    </SafeAreaView>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 32,
-    paddingTop: 20 + Constants.statusBarHeight,
+    paddingTop: 20,
   },
 
   pointImage: {
@@ -90,6 +96,7 @@ const styles = StyleSheet.create({
     borderTopWidth: StyleSheet.hairlineWidth,
     borderColor: '#999',
     paddingVertical: 20,
+    paddingBottom: 0,
     paddingHorizontal: 32,
     flexDirection: 'row',
     justifyContent: 'space-between'
