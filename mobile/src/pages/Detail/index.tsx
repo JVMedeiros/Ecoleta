@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, Text, ScrollView, Image, TouchableOpacity, SafeAreaView} from 'react-native';
-import Constants from 'expo-constants';
+import {View, StyleSheet, Text, Linking, Image, TouchableOpacity, SafeAreaView} from 'react-native';
 import {Feather as Icon, FontAwesome } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
@@ -43,6 +42,10 @@ const Detail = () => {
       setData(response.data);
     });
   }, [])
+
+  function handleWhatsapp() {
+    Linking.openURL(`whatsapp://send?phone=${data.point.whatsapp}&text=Gostaria de utilizar o serviço de coleta de resíduos`)
+  }
 
   function handleComposeMail() {
     MailComposer.composeAsync({
