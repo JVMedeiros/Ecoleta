@@ -13,15 +13,22 @@ const Detail = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={handleNavigateBack}>
-        <Icon name="arrow-left" size={20} color="#34cb79" />
-      </TouchableOpacity>
+    <>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={handleNavigateBack}>
+          <Icon name="arrow-left" size={20} color="#34cb79" />
+        </TouchableOpacity>
 
-      <Image style={styles.pointImage} source={{ uri: 'https://images.unsplash.com/photo-1542406523-20963e4bb303?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=600.00.00RJ 22'}}/>
-      <Text style={styles.pointName}>GTR do Pai tá bala</Text>
-      <Text style={styles.pointItems}>Lâmpadas, Óleo de Cozinha</Text>
-    </View>
+        <Image style={styles.pointImage} source={{ uri: 'https://images.unsplash.com/photo-1542406523-20963e4bb303?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=600.00.00RJ 22'}}/>
+        <Text style={styles.pointName}>GTR do Pai tá bala</Text>
+        <Text style={styles.pointItems}>Lâmpadas, Óleo de Cozinha</Text>
+
+        <View style={styles.address}>
+          <Text style={styles.addressTitle}>Endereço</Text>
+          <Text style={styles.addressContent}>São José dos Campos</Text>
+        </View>
+      </View>
+    </>
   );
 };
 
