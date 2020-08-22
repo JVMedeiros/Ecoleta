@@ -1,14 +1,15 @@
-import React, {useState, useEffect } from 'react';
+import React from 'react';
 import {View, StyleSheet, Text, ScrollView, Image, TouchableOpacity, SafeAreaView} from 'react-native';
 import Constants from 'expo-constants';
 import {Feather as Icon, FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 
+
+
+
 const Detail = () => {
   const navigation = useNavigation();
-
-  useEffect(() => {}, []);
 
   function handleNavigateBack() {
     navigation.goBack();
