@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, StyleSheet, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
 import Constants from 'expo-constants';
-import {Feather as Icon } from '@expo/vector-icons';
+import {Feather as Icon, FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-
+import { RectButton } from 'react-native-gesture-handler';
 
 const Detail = () => {
   const navigation = useNavigation();
@@ -26,6 +26,13 @@ const Detail = () => {
         <View style={styles.address}>
           <Text style={styles.addressTitle}>Endereço</Text>
           <Text style={styles.addressContent}>São José dos Campos</Text>
+        </View>
+
+        <View style={styles.footer}>
+          <RectButton style={styles.button} onPress={() => {}}>
+            <FontAwesome name="whatsapp" size={20} color="#fff"/>
+            <Text style={styles.buttonText}>WhatsApp</Text>
+          </RectButton>
         </View>
       </View>
     </>
