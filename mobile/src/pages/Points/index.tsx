@@ -1,18 +1,17 @@
-import React, {useState, useEffect } from 'react';
-import {View, StyleSheet, Text, ScrollView, Image, Alert} from 'react-native';
+import React, { useState, useEffect } from 'react';
 import Constants from 'expo-constants';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import {Feather as Icon } from '@expo/vector-icons';
+import { Feather as Icon } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
-import {SvgUri} from 'react-native-svg';
+import { SvgUri } from 'react-native-svg';
 import * as Location from 'expo-location';
 import api from '../../services/api';
 
 interface Item {
   id: number;
   title: string;
-  image_url: string
+  image_url: string;
 }
 
 interface Point {
@@ -30,14 +29,14 @@ interface Params {
 }
 
 const Points = () => {
-  const route = useRoute();
-
-  const navigation = useNavigation();
-
   const [items, setItems] = useState<Item[]>([]);
   const [points, setPoints] = useState<Point[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
   const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);
+
+  const navigation = useNavigation();
+  const route = useRoute();
 
   const routeParams = route.params as Params;
 
@@ -70,7 +69,7 @@ const Points = () => {
       setItems(response.data);
     });
   }, []);
-  
+
   useEffect(() => {
     api.get('points', {
       params: {
@@ -78,7 +77,7 @@ const Points = () => {
         uf: routeParams.uf,
         items: selectedItems
       }
-    }).then(response =>{
+    }).then(response => {
       setPoints(response.data);
     })
   }, [selectedItems]);
@@ -91,18 +90,17 @@ const Points = () => {
     navigation.navigate('Detail', { point_id: id });
   }
 
-
-  function handleSelectedItem(id: number) {
+  function handleSelectItem(id: number) {
     const alreadySelected = selectedItems.findIndex(item => item === id);
 
     if (alreadySelected >= 0) {
-        const filteredItems = selectedItems.filter(item => item !== id);
+      const filteredItems = selectedItems.filter(item => item !== id);
 
-        setSelectedItems(filteredItems)
+      setSelectedItems(filteredItems);
     } else {
-        setSelectedItems([...selectedItems, id]);
+      setSelectedItems([ ...selectedItems, id ]);
     }
-}
+  }
 
   return (
     <>
@@ -110,13 +108,12 @@ const Points = () => {
         <TouchableOpacity onPress={handleNavigateBack}>
           <Icon name="arrow-left" size={20} color="#34cb79" />
         </TouchableOpacity>
-    
-        <Text style={styles.title}>Bem vindo.</Text>
-        <Text style={styles.title}>Encontre no mapa um ponto de coleta.</Text>
-    
-        <View style={styles.mapContainer}>
 
-          {initialPosition[0] !== 0 && (
+        <Text style={styles.title}>Bem vindo.</Text>
+        <Text style={styles.description}>Encontre no mapa um ponto de coleta.</Text>
+
+        <View style={styles.mapContainer}>
+          { initialPosition[0] !== 0 && (
             <MapView 
               style={styles.map} 
               initialRegion={{
@@ -127,40 +124,39 @@ const Points = () => {
               }}
             >
               {points.map(point => (
-                <Marker
+                <Marker 
                   key={String(point.id)}
                   style={styles.mapMarker}
                   onPress={() => handleNavigateToDetail(point.id)}
-                  coordinate={{
+                  coordinate={{ 
                     latitude: point.latitude,
-                    longitude: point.longitude,
-                  }}
+                    longitude: point.longitude, 
+                  }} 
                 >
                   <View style={styles.mapMarkerContainer}>
-                    <Image style={styles.mapMarkerImage} source={{uri: point.image}}/>
-                    <Text style={styles.mapMarkerTitle}>{point.name}</Text>
+                    <Image style={styles.mapMarkerImage} source={{ uri: point.image_url }} />
+                    <Text style={styles.mapMarkerTitle}>{point.name}</Text>                
                   </View>
                 </Marker>
               ))}
             </MapView>
-          )}
-
+          ) }
         </View>
       </View>
       <View style={styles.itemsContainer}>
-        <ScrollView 
+        <ScrollView
           horizontal 
-          showsHorizontalScrollIndicator={false} 
-          contentContainerStyle={{ paddingHorizontal:20 }}  
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: 20 }}
         >
           {items.map(item => (
             <TouchableOpacity 
               key={String(item.id)} 
               style={[
-                styles.item, 
+                styles.item,
                 selectedItems.includes(item.id) ? styles.selectedItem : {}
               ]} 
-              onPress={() => handleSelectedItem(item.id)} 
+              onPress={() => handleSelectItem(item.id)}
               activeOpacity={0.6}
             >
               <SvgUri width={42} height={42} uri={item.image_url} />
@@ -172,6 +168,7 @@ const Points = () => {
     </>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
